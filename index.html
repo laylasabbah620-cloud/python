@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دورة بايثون لمعلمي الصف العاشر</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#fff5f9;--card:#fff;--ink:#3a1228;--pk:#e91e8c;--pk2:#ffd6ea;--code:#2b0f20;--cf:#ffe6f2}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1c0b15;--card:#2b1220;--ink:#ffe9f4;--pk2:#4a1c37;--cf:#3a1830}}
+:root[data-theme=dark]{--bg:#1c0b15;--card:#2b1220;--ink:#ffe9f4;--pk2:#4a1c37;--cf:#3a1830}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Cairo,Tahoma,sans-serif;line-height:1.8}
+header{background:var(--pk);color:#fff;padding:28px 16px;text-align:center}
+header h1{margin:0;font-size:clamp(24px,5vw,40px);font-weight:900}
+header p{margin:4px 0 0;opacity:.95}
+nav{display:flex;gap:8px;overflow-x:auto;padding:12px;background:var(--pk2);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+nav button{flex:none;border:2px solid var(--pk);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;font:700 14px Cairo,Tahoma,sans-serif;cursor:pointer}
+nav button[aria-selected=true]{background:var(--pk);color:#fff}
+nav button:focus-visible,.fl:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+main{max-width:1000px;margin:0 auto;padding:20px 14px 40px}
+.hero{display:flex;gap:16px;align-items:center;background:var(--card);border-radius:20px;padding:18px;border:2px solid var(--pk2)}
+.big{font-size:64px;flex:none;background:var(--pk2);border-radius:20px;width:100px;height:100px;display:grid;place-items:center}
+h2{margin:0;color:var(--pk);font-size:26px}
+.en{margin:0;opacity:.7;direction:ltr;text-align:right;font-weight:700}
+h3{color:var(--pk);margin:26px 0 8px}
+.box{background:var(--card);border-radius:16px;padding:14px 18px;border-right:6px solid var(--pk)}
+pre{direction:ltr;text-align:left;background:var(--code);color:#ffd6ea;padding:12px;border-radius:12px;overflow-x:auto;margin:8px 0;font:14px/1.6 Consolas,monospace;white-space:pre}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:14px}
+.fl{height:230px;perspective:900px;cursor:pointer;background:none;border:0;padding:0;font:inherit;color:inherit;text-align:inherit}
+.in{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+.fl.on .in{transform:rotateY(180deg)}
+.f,.b{position:absolute;inset:0;backface-visibility:hidden;border-radius:16px;padding:14px;overflow:auto}
+.f{background:var(--card);border:2px solid var(--pk);display:flex;flex-direction:column;justify-content:space-between}
+.f small{color:var(--pk);font-weight:700}
+.b{background:var(--cf);border:2px dashed var(--pk);transform:rotateY(180deg)}
+.b pre{margin:4px 0 0;font-size:13px}
+.tw{overflow-x:auto;border-radius:14px;border:2px solid var(--pk2);background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th{background:var(--pk);color:#fff;padding:8px 10px;text-align:right}
+td{padding:8px 10px;border-top:1px solid var(--pk2);vertical-align:top}
+tbody tr:nth-child(even){background:var(--cf)}
+td pre{margin:0;font-size:13px;padding:8px}
+@media(prefers-reduced-motion:reduce){.in{transition:none}}
+</style>
+</head>
+<body>
+<header><h1>🐍 دورة بايثون للمعلمين</h1><p>المادة التدريبية العملية – الصف العاشر</p></header>
+<nav id="nav" role="tablist"></nav>
+<main id="m"></main>
+<script>
+const T=[
+["🚀","مقدمة في Python","Introduction to Python",
+"بايثون لغة برمجة مفسَّرة (تنفَّذ سطرًا بسطر) وعالية المستوى (قريبة من اللغة الإنجليزية) وعامة الأهداف. أنشأها Guido van Rossum وصدر أول إصدار عام 1991. تتميز بالكود المقروء وبمجتمع كبير. تكتب الأوامر في محرر مثل VS Code في ملف بامتداد py. وتشغَّل بالضغط على زر التنفيذ أو بالأمر python hello.py. الأمر print يطبع النص على الشاشة، والنص يوضع بين علامتي تنصيص، والرمز # يكتب تعليقًا لا ينفَّذ.",
+'print("Hello World")  # أول برنامج',
+[["اطبع جملة: مرحبًا بالعالم","print(\"مرحبا بالعالم\")"],["اطبع اسمك في سطر وصفك في سطر آخر","print(\"Sara\")\nprint(\"Grade 10\")"],["اطبع الرقم 2026 بدون علامات تنصيص","print(2026)"],["اطبع كلمتين في سطر واحد بالأمر print مرة واحدة","print(\"Python\", \"Teacher\")"],["اكتب تعليقًا ثم اطبع جملة تحت التعليق","# طباعة ترحيب\nprint(\"Welcome\")"]]],
+["📦","المتغيرات وأنواع البيانات","Variables and Data Types",
+"المتغير اسم يحفظ قيمة. لا تحتاج بايثون لتحديد النوع، فهي ديناميكية الكتابة وتحدده من القيمة. الأنواع الأساسية: int للأعداد الصحيحة، float للكسرية، str للنصوص، bool لصح/خطأ (True/False). الأمر type يكشف النوع، وint() وfloat() وstr() تحوّل بين الأنواع، والأمر input يأخذ قيمة من المستخدم وتكون دائمًا نصًا. الأسماء حساسة لحالة الأحرف ولا تبدأ برقم.",
+'age = int(input("العمر: "))\nprint(type(age))  # int',
+[["خزّن اسمك وعمرك في متغيرين واطبعهما","name = \"Ali\"\nage = 15\nprint(name, age)"],["اعرف نوع القيمة 3.14","print(type(3.14))  # float"],["حوّل العدد 2021 إلى float","y = float(2021)\nprint(y)  # 2021.0"],["اطلب من المستخدم اسمه وحيّه","n = input(\"Name: \")\nprint(\"Hi \" + n)"],["حوّل النص \"25\" إلى عدد وأضف عليه 5","x = int(\"25\")\nprint(x + 5)  # 30"]]],
+["➕","العمليات الحسابية","Arithmetic Operations",
+"العمليات: الجمع + والطرح - والضرب * والقسمة / (ناتجها float دائمًا) والقسمة الصحيحة // (تحذف الكسر) والباقي % والأس **. ولاختصار الإسناد نستخدم += و -= و *= و /= و %=. الأولوية للأقواس ثم الأس ثم الضرب والقسمة ثم الجمع والطرح.",
+'print(7 // 2, 7 % 2, 2 ** 3)  # 3 1 8',
+[["احسب 17 مقسومًا على 5 قسمة صحيحة والباقي","print(17 // 5)  # 3\nprint(17 % 5)  # 2"],["احسب مساحة مستطيل 6×4","print(6 * 4)  # 24"],["احسب 5 أس 3","print(5 ** 3)  # 125"],["زد المتغير x=10 بمقدار 4 باستخدام +=","x = 10\nx += 4\nprint(x)  # 14"],["اعرف هل العدد زوجي: اطبع باقي 8 على 2","print(8 % 2)  # 0 يعني زوجي"]]],
+["⚖️","عمليات المقارنة والمنطق","Comparison and Logical Operations",
+"المقارنة تنتج قيمة bool: == يساوي، != لا يساوي، > أكبر، < أصغر، >= أكبر أو يساوي، <= أصغر أو يساوي. وتدمج الشروط بالمعاملات المنطقية المكتوبة بالإنجليزية: and (يجب تحقق الاثنين)، or (يكفي واحد)، not (يعكس النتيجة). انتبه: = للإسناد و == للمقارنة.",
+'x = 7\nprint(x > 5 and x < 10)  # True',
+[["هل 10 تساوي 10.0؟","print(10 == 10.0)  # True"],["هل العدد 15 بين 10 و20؟","n = 15\nprint(n >= 10 and n <= 20)  # True"],["هل 3 لا تساوي 4؟","print(3 != 4)  # True"],["اعكس النتيجة True بالأمر not","print(not True)  # False"],["هل الدرجة 45 راسبة (أقل من 50) أو غائب؟","d = 45\nabsent = False\nprint(d < 50 or absent)  # True"]]],
+["🔤","النصوص","Strings",
+"النص يكتب بين ' ' أو \" \"، وبثلاث علامات لعدة أسطر. النص كالمصفوفة: المؤشر Index يبدأ من 0 ونقتطع جزءًا بالصيغة [بداية:نهاية] (النهاية غير مشمولة). لا يمكن تعديل النص في مكانه (immutable). وأشهر أوامره: len للطول، upper وlower لحالة الأحرف، replace للاستبدال، + للدمج و * للتكرار، in للبحث، وformat لدمج المتغيرات.",
+'s = "Palestine"\nprint(s[0], s[1:4], len(s))',
+[["اطبع الحرف الأول والأخير من \"Python\"","s = \"Python\"\nprint(s[0], s[-1])  # P n"],["حوّل \"palestine\" إلى أحرف كبيرة","print(\"palestine\".upper())"],["استبدل a بـ o في \"banana\"","print(\"banana\".replace(\"a\", \"o\"))  # bonono"],["اطبع كلمة Hi ثلاث مرات متتالية","print(\"Hi\" * 3)  # HiHiHi"],["اطبع: AlQuds is the capital of Palestine بالأمر format","print(\"{} is the capital of {}\".format(\"AlQuds\", \"Palestine\"))"]]],
+["🔀","الجمل الشرطية","Conditional Statements",
+"تنفِّذ الجملة if كودًا فقط إذا تحقق الشرط، وelse لحالة عدم التحقق، وelif لفحص شرط جديد. مهم: بعد النقطتين : نزيح الكود بمسافة (Indentation) فهي التي تحدد نطاقه، وهي elif وليست else if. ويمكن تداخل الجمل الشرطية، أو كتابتها بسطر واحد (Ternary): نتيجة = قيمة1 if شرط else قيمة2.",
+'m = 85\nif m >= 90:\n    print("A")\nelif m >= 80:\n    print("B")\nelse:\n    print("C")',
+[["اطبع هل العدد موجب أو سالب أو صفر","n = int(input())\nif n > 0:\n    print(\"positive\")\nelif n < 0:\n    print(\"negative\")\nelse:\n    print(\"zero\")"],["اطبع ناجح إذا العلامة >= 50 وإلا راسب","g = 60\nif g >= 50:\n    print(\"pass\")\nelse:\n    print(\"fail\")"],["هل العدد زوجي أم فردي؟","n = 7\nif n % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")"],["استخدم Ternary لطباعة adult إذا العمر >= 18","age = 16\nprint(\"adult\" if age >= 18 else \"minor\")"],["اطبع أكبر عددين a وb","a, b = 4, 9\nif a > b:\n    print(a)\nelse:\n    print(b)"]]],
+["🐞","أنواع الأخطاء وتصحيح البرامج","Types of Errors and Debugging",
+"ثلاثة أنواع: أخطاء الصياغة Syntax (مخالفة قواعد الكتابة فلا يبدأ البرنامج)، وأخطاء التنفيذ Runtime (تتوقف وسط التشغيل مثل ZeroDivisionError وNameError وTypeError وIndexError)، والأخطاء المنطقية Logic (يعمل البرنامج لكن نتيجته خاطئة). للتصحيح: اقرأ رسالة الخطأ من آخر سطر، وتتبّع القيم بـ print، وعالج الأخطاء المتوقعة بـ try وexcept وfinally وelse.",
+'try:\n    print(10 / 0)\nexcept ZeroDivisionError:\n    print("لا قسمة على صفر")\nfinally:\n    print("انتهى")',
+[["ما نوع الخطأ في: print(\"Hi\"  (قوس ناقص)؟","Syntax Error"],["ما نوع الخطأ في: print(x) دون تعريف x؟","NameError (Runtime)"],["اكتب try/except لتحويل \"abc\" إلى int","try:\n    int(\"abc\")\nexcept ValueError:\n    print(\"أدخل رقمًا\")"],["برنامج يحسب متوسط عددين هكذا: a+b/2. ما الخطأ؟","خطأ منطقي: الأولوية للقسمة\nالصحيح: (a + b) / 2"],["اطبع Done Successfully عند نجاح try بدون خطأ","try:\n    x = 5\nexcept:\n    print(\"error\")\nelse:\n    print(\"Done Successfully\")"]]],
+["🔁","الحلقات التكرارية","Loops",
+"الحلقة تكرر كودًا. for تكرر عددًا معلومًا من المرات، وغالبًا مع range(بداية, نهاية, خطوة) والنهاية غير مشمولة. while تكرر ما دام الشرط صحيحًا (احذر الحلقة اللانهائية: غيّر المتغير داخلها). break توقف الحلقة وcontinue تتخطى الدورة الحالية. ويمكن تداخل الحلقات مثل جدول الضرب.",
+'for i in range(1, 4):\n    print(i)  # 1 2 3\nn = 3\nwhile n > 0:\n    n -= 1',
+[["اطبع الأعداد من 1 إلى 5","for i in range(1, 6):\n    print(i)"],["اطبع جدول ضرب العدد 3","for i in range(1, 11):\n    print(3, \"x\", i, \"=\", 3 * i)"],["اجمع الأعداد من 1 إلى 100","s = 0\nfor i in range(1, 101):\n    s += i\nprint(s)  # 5050"],["عدّ تنازليًا من 5 إلى 1 بـ while","n = 5\nwhile n >= 1:\n    print(n)\n    n -= 1"],["اطبع مثلث نجوم من 3 أسطر (حلقة متداخلة)","for i in range(1, 4):\n    print(\"*\" * i)"]]],
+["📚","المكتبات والدوال الجاهزة","Libraries and Built-in Functions",
+"المكتبة مجموعة دوال جاهزة نستدعيها بـ import. من الدوال المدمجة: len وmax وmin وsum وabs وround وsorted. ومن المكتبات: math للرياضيات (sqrt وpi وceil وfloor)، وrandom للعشوائية (randint وchoice)، وdatetime للتاريخ والوقت (datetime.now). وتوجد آلاف المكتبات في فهرس PyPI وتثبَّت بالأمر pip install.",
+'import math, random\nprint(math.sqrt(16))  # 4.0\nprint(random.randint(1, 6))',
+[["احسب الجذر التربيعي للعدد 81","import math\nprint(math.sqrt(81))  # 9.0"],["اطبع عددًا عشوائيًا بين 1 و10","import random\nprint(random.randint(1, 10))"],["اطبع التاريخ والوقت الحاليين","from datetime import datetime\nprint(datetime.now())"],["اوجد أكبر وأصغر عدد في 3 ، 9 ، 1","print(max(3, 9, 1), min(3, 9, 1))  # 9 1"],["اختر طالبًا عشوائيًا من قائمة أسماء","import random\nnames = [\"Ali\", \"Sara\", \"Omar\"]\nprint(random.choice(names))"]]],
+["🏆","تطبيقات ومهام برمجية","Practical Applications and Challenges",
+"في هذا القسم ندمج كل ما سبق في مسائل قصيرة: تحليل المسألة، ثم كتابة الخطوات بالعربية (Pseudocode)، ثم الكود، ثم اختبار بقيم مختلفة. نصيحة للمعلم: اطلب من الطلاب توقّع الناتج قبل التشغيل، وشجّع العمل الثنائي، وقدّم التحدي على مراحل من السهل إلى الصعب.",
+'# آلة حاسبة مصغرة\na = int(input())\nb = int(input())\nprint(a + b, a - b, a * b, a / b)',
+[["آلة حاسبة: خذ رقمين واطبع الجمع والطرح والضرب والقسمة","a = int(input())\nb = int(input())\nprint(a+b, a-b, a*b, a/b)"],["احسب معدل 3 علامات وأخبر هل الطالب ناجح (>=50)","a, b, c = 60, 40, 70\navg = (a + b + c) / 3\nprint(avg, \"pass\" if avg >= 50 else \"fail\")"],["لعبة تخمين: الرقم السري 7، استمر حتى يصيب المستخدم","while int(input(\"خمّن: \")) != 7:\n    print(\"خطأ\")\nprint(\"أحسنت!\")"],["عُدّ عدد الأعداد الزوجية من 1 إلى 20","c = 0\nfor i in range(1, 21):\n    if i % 2 == 0:\n        c += 1\nprint(c)  # 10"],["اعكس نصًا يدخله المستخدم","s = input()\nprint(s[::-1])"]]]
+];
+const e=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const H=["النوع","الشرح","مثال","الناتج"];
+const X={
+1:[["أنواع البيانات في بايثون",["النوع","الاسم","الشرح","مثال","ناتج type()"],[
+["int","عدد صحيح","أعداد بدون كسور، موجبة أو سالبة","~age = 15","<class 'int'>"],
+["float","عدد حقيقي","أعداد بفاصلة عشرية","~price = 15.20","<class 'float'>"],
+["complex","عدد مركّب","عدد له جزء حقيقي وتخيّلي (j)","~z = 3+5j","<class 'complex'>"],
+["str","نص","حروف أو كلمات بين علامات تنصيص","~name = \"Sara\"","<class 'str'>"],
+["bool","منطقي","قيمتان فقط: True أو False","~ok = True","<class 'bool'>"],
+["list","قائمة","مجموعة مرتبة وقابلة للتعديل، بأقواس مربعة","~L = [1, 2, 3]","<class 'list'>"],
+["tuple","صف","مجموعة مرتبة غير قابلة للتعديل، بأقواس عادية","~T = (1, 2, 3)","<class 'tuple'>"],
+["set","مجموعة","عناصر غير مكررة وبلا ترتيب، بأقواس معقوفة","~S = {1, 2, 2}  # {1, 2}","<class 'set'>"],
+["dict","قاموس","أزواج مفتاح:قيمة","~D = {\"name\": \"Ali\"}","<class 'dict'>"]]],
+["التحويل بين الأنواع",["الدالة","الشرح","مثال","الناتج"],[
+["int()","تحوّل إلى عدد صحيح","~int(\"7\")","7"],
+["float()","تحوّل إلى عدد حقيقي","~float(3)","3.0"],
+["str()","تحوّل إلى نص","~str(25)","\"25\""],
+["bool()","تحوّل إلى قيمة منطقية (الصفر والنص الفارغ False)","~bool(0)","False"]]]],
+2:[["العمليات الحسابية",["العملية","الرمز","الشرح","مثال","الناتج"],[
+["الجمع","+","يجمع رقمين","~5 + 4","9"],
+["الطرح","-","يطرح الثاني من الأول","~5 - 4","1"],
+["الضرب","*","يضرب رقمين","~5 * 4","20"],
+["القسمة","/","قسمة ناتجها دائمًا float","~5 / 4","1.25"],
+["القسمة الصحيحة","//","تحذف الجزء الكسري","~5 // 4","1"],
+["باقي القسمة","%","الباقي بعد القسمة","~5 % 4","1"],
+["الأس","**","رفع عدد إلى قوة","~5 ** 2","25"]]],
+["عمليات إسناد القيمة",["الرمز","المعنى","مثال (x = 10)","قيمة x بعد التنفيذ"],[
+["=","إسناد قيمة","~x = 2","2"],
+["+=","x = x + 3","~x += 3","13"],
+["-=","x = x - 3","~x -= 3","7"],
+["*=","x = x * 3","~x *= 3","30"],
+["/=","x = x / 4","~x /= 4","2.5"],
+["%=","x = x % 3","~x %= 3","1"]]]],
+3:[["عمليات المقارنة (a = 7 ، b = 5)",["الرمز","المعنى","مثال","الناتج"],[
+["==","يساوي","~a == b","False"],
+["!=","لا يساوي","~a != b","True"],
+[">","أكبر من","~a > b","True"],
+["<","أصغر من","~a < b","False"],
+[">=","أكبر أو يساوي","~a >= 7","True"],
+["<=","أصغر أو يساوي","~a <= b","False"]]],
+["العمليات المنطقية (x = 7)",["المعامل","المعنى","مثال","الناتج"],[
+["and","صحيحة إذا تحقق الشرطان معًا","~x > 5 and x < 10","True"],
+["or","صحيحة إذا تحقق أحد الشرطين أو كلاهما","~x > 9 or x < 8","True"],
+["not","تعكس النتيجة","~not x > 5","False"]]],
+["عمليات العضوية",["المعامل","المعنى","مثال","الناتج"],[
+["in","العنصر موجود في المجموعة","~\"a\" in \"Palestine\"","True"],
+["not in","العنصر غير موجود في المجموعة","~3 not in [1, 2, 3]","False"]]]],
+4:[["دوال ومعاملات النصوص (s = \"Palestine\")",["الدالة","الشرح","مثال","الناتج"],[
+["len()","طول النص (يعدّ من 1)","~len(s)","9"],
+["upper()","تحويل لأحرف كبيرة","~s.upper()","PALESTINE"],
+["lower()","تحويل لأحرف صغيرة","~s.lower()","palestine"],
+["title()","أول حرف من كل كلمة كبير","~\"hello world\".title()","Hello World"],
+["replace(a,b)","استبدال مقطع بآخر","~s.replace(\"e\", \"E\")","PalEstinE"],
+["strip()","حذف المسافات من الطرفين","~\"  hi  \".strip()","hi"],
+["split(sep)","تقسيم النص إلى قائمة","~\"a,b,c\".split(\",\")","['a', 'b', 'c']"],
+["join(list)","دمج قائمة في نص","~\"-\".join([\"a\", \"b\"])","a-b"],
+["find(x)","موقع أول ظهور (-1 إن لم يوجد)","~s.find(\"t\")","4"],
+["count(x)","عدد مرات ظهور المقطع","~s.count(\"e\")","2"],
+["startswith(x)","هل يبدأ النص بـ x؟","~s.startswith(\"Pal\")","True"],
+["endswith(x)","هل ينتهي النص بـ x؟","~s.endswith(\"ne\")","True"],
+["s[i]","الحرف عند المؤشر (يبدأ من 0)","~s[1]","a"],
+["s[a:b]","اقتطاع جزء (النهاية غير مشمولة)","~s[0:3]","Pal"],
+["+  و  *","دمج وتكرار","~\"Py\" + \"thon\" * 2","Pythonthon"],
+["format()","دمج المتغيرات في النص","~\"{} is {}\".format(\"Ali\", 15)","Ali is 15"],
+["f-string","دمج المتغيرات مباشرة","~n = \"Ali\"\nf\"Hi {n}\"","Hi Ali"]]]],
+5:[["أنواع الجمل الشرطية",["النوع","الشرح","مثال","الناتج"],[
+["if","ينفَّذ الكود إذا تحقق الشرط فقط","~x = 10\nif x > 3:\n    print(\"big\")","big"],
+["if - else","else للحالة التي لا يتحقق فيها الشرط","~if 6 > 7:\n    print(\"Yes\")\nelse:\n    print(\"No\")","No"],
+["if - elif - else","فحص عدة شروط بالترتيب وينفَّذ أول شرط صحيح","~x, y = 2, 3\nif x > y:\n    print(\"x>y\")\nelif x == y:\n    print(\"x==y\")\nelse:\n    print(\"x<y\")","x<y"],
+["if متداخلة","جملة شرطية داخل أخرى","~x = 110\nif x > 100:\n    if x < 150:\n        print(\"100<x<150\")","100<x<150"],
+["Ternary","شرط ونتيجته في سطر واحد","~days = 6\nok = True if days >= 6 else False\nprint(ok)","True"],
+["شرط مركّب","دمج الشروط بـ and أو or","~eat = \"Banana\"\nif eat == \"Banana\" or eat == \"Apple\":\n    print(\"Fruit\")","Fruit"]]]],
+6:[["أنواع الأخطاء",["النوع","الشرح","مثال","النتيجة"],[
+["Syntax Error (صياغة)","مخالفة قواعد الكتابة، فلا يبدأ البرنامج أصلًا","~print(\"Hi\"","SyntaxError: '(' was never closed"],
+["Runtime Error (تنفيذ)","يبدأ البرنامج ثم يتوقف عند سطر الخطأ","~print(10 / 0)","ZeroDivisionError"],
+["Logic Error (منطقي)","البرنامج يعمل بلا رسالة لكن نتيجته خاطئة","~a, b = 4, 6\nprint(a + b / 2)","7.0 بدل 5.0 (الصحيح: (a + b) / 2)"]]],
+["أشهر أخطاء التنفيذ",["الخطأ","سببه","مثال"],[
+["ZeroDivisionError","القسمة على صفر","~print(5 / 0)"],
+["NameError","استخدام متغير غير معرَّف","~print(i)"],
+["TypeError","عملية على أنواع غير متوافقة","~print(\"5\" + 3)"],
+["ValueError","قيمة غير صالحة للتحويل","~int(\"abc\")"],
+["IndexError","مؤشر خارج حدود القائمة أو النص","~L = [1, 2]\nprint(L[5])"],
+["KeyError","مفتاح غير موجود في القاموس","~d = {\"a\": 1}\nprint(d[\"b\"])"],
+["ModuleNotFoundError","مكتبة غير موجودة أو غير مثبّتة","~import abcxyz"]]],
+["أوامر معالجة الأخطاء",["الأمر","الشرح","مثال"],[
+["try / except","جرّب الكود وإن حدث خطأ نفّذ except","~try:\n    print(i)\nexcept:\n    print(\"i not defined\")"],
+["except نوع محدد","رسالة خاصة بكل نوع خطأ","~try:\n    print(5 / 0)\nexcept ZeroDivisionError:\n    print(\"no zero\")"],
+["else","ينفَّذ إذا لم يحدث أي خطأ","~try:\n    x = 7\nexcept:\n    print(\"err\")\nelse:\n    print(\"OK\")"],
+["finally","ينفَّذ دائمًا سواء حدث خطأ أم لا","~try:\n    print(i)\nexcept:\n    print(\"err\")\nfinally:\n    print(\"done\")"]]]],
+7:[["أنواع الحلقات",["النوع","متى نستخدمه","مثال","الناتج"],[
+["for","عندما نعرف عدد التكرارات أو نمرّ على عناصر مجموعة","~for i in range(3):\n    print(i)","0\n1\n2"],
+["while","نكرر ما دام الشرط صحيحًا ولا نعرف عدد المرات","~n = 3\nwhile n > 0:\n    print(n)\n    n -= 1","3\n2\n1"],
+["حلقة متداخلة","حلقة داخل حلقة (جداول، أشكال)","~for i in range(1, 3):\n    for j in range(1, 3):\n        print(i, j)","1 1\n1 2\n2 1\n2 2"]]],
+["جميع حالات حلقة for",["الحالة","الشرح","مثال","الناتج"],[
+["range(n)","من 0 إلى n-1","~for i in range(3):\n    print(i)","0 1 2 (كل رقم بسطر)"],
+["range(بداية, نهاية)","النهاية غير مشمولة","~for i in range(2, 5):\n    print(i)","2 3 4"],
+["range(بداية, نهاية, خطوة)","تحديد مقدار الزيادة","~for i in range(0, 10, 3):\n    print(i)","0 3 6 9"],
+["خطوة سالبة (عدّ تنازلي)","البداية أكبر من النهاية","~for i in range(5, 0, -2):\n    print(i)","5 3 1"],
+["على نص","مرور على الحروف","~for ch in \"Hi!\":\n    print(ch)","H i !"],
+["على قائمة","مرور على العناصر","~for n in [10, 20]:\n    print(n)","10 20"],
+["على قاموس","المفاتيح، أو items() للمفتاح والقيمة","~d = {\"a\": 1, \"b\": 2}\nfor k, v in d.items():\n    print(k, v)","a 1\nb 2"],
+["enumerate()","العنصر مع رقمه","~for i, x in enumerate([\"x\", \"y\"]):\n    print(i, x)","0 x\n1 y"],
+["zip()","المرور على قائمتين معًا","~for a, b in zip([1, 2], [\"u\", \"v\"]):\n    print(a, b)","1 u\n2 v"],
+["مع len() والمؤشر","الوصول للعنصر بمؤشره","~L = [5, 6]\nfor i in range(len(L)):\n    print(L[i])","5 6"],
+["for مع break","إيقاف الحلقة فورًا","~for i in range(10):\n    if i == 3:\n        break\n    print(i)","0 1 2"],
+["for مع continue","تخطي الدورة الحالية","~for i in range(4):\n    if i == 2:\n        continue\n    print(i)","0 1 3"],
+["for مع else","else تنفَّذ إذا انتهت الحلقة دون break","~for i in range(2):\n    print(i)\nelse:\n    print(\"done\")","0 1 done"],
+["حلقة متداخلة","شكل نجوم","~for i in range(1, 4):\n    print(\"*\" * i)","*\n**\n***"]]],
+["جميع حالات حلقة while",["الحالة","الشرح","مثال","الناتج"],[
+["عدّاد عادي","يتغير المتغير داخل الحلقة حتى يفشل الشرط","~i = 1\nwhile i <= 3:\n    print(i)\n    i += 1","1 2 3"],
+["while True مع break","حلقة مفتوحة نوقفها بشرط داخلي","~n = 0\nwhile True:\n    n += 1\n    if n == 3:\n        break\nprint(n)","3"],
+["while مع continue","تخطي دورة","~i = 0\nwhile i < 4:\n    i += 1\n    if i == 2:\n        continue\n    print(i)","1 3 4"],
+["while مع else","else تنفَّذ إذا انتهت دون break","~i = 0\nwhile i < 2:\n    i += 1\nelse:\n    print(\"end\")","end"],
+["التحقق من مدخل المستخدم","نكرر الطلب حتى يصح الإدخال","~p = input()\nwhile p != \"1234\":\n    p = input(\"Try again: \")\nprint(\"OK\")","يتكرر السؤال حتى يُدخل 1234"],
+["حلقة لانهائية (خطأ شائع)","نسيان تغيير المتغير فلا تنتهي. أوقفها بـ Ctrl+C","~i = 1\nwhile i < 3:\n    print(i)","تطبع 1 بلا نهاية"]]],
+["أوامر التحكم بالحلقات",["الأمر","الشرح","مثال","الناتج"],[
+["break","يخرج من الحلقة كليًا","~for i in range(5):\n    if i == 1:\n        break","تتوقف عند i=1"],
+["continue","ينتقل للدورة التالية","~for i in range(3):\n    if i == 1:\n        continue\n    print(i)","0 2"],
+["pass","لا يفعل شيئًا، يملأ مكانًا فارغًا","~for i in range(2):\n    pass","لا شيء"],
+["else","تنفَّذ بعد الحلقة إن لم يحدث break","~for i in range(1):\n    pass\nelse:\n    print(\"ok\")","ok"]]]],
+8:[["طرق استيراد المكتبات",["الطريقة","الشرح","مثال"],[
+["import مكتبة","استيراد المكتبة كاملة، ونستدعي بذكر اسمها","~import math\nprint(math.sqrt(9))"],
+["from مكتبة import دالة","استيراد دالة محددة واستعمالها مباشرة","~from math import sqrt\nprint(sqrt(9))"],
+["import مكتبة as اسم","اسم مستعار مختصر","~import random as r\nprint(r.randint(1, 5))"],
+["pip install","تثبيت مكتبة من فهرس PyPI (في الطرفية)","~pip install requests"]]],
+["الدوال الجاهزة (Built-in)",["الدالة","الشرح","مثال","الناتج"],[
+["len()","عدد العناصر","~len([4, 5, 6])","3"],
+["max()","أكبر قيمة","~max(3, 9, 1)","9"],
+["min()","أصغر قيمة","~min(3, 9, 1)","1"],
+["sum()","مجموع قائمة","~sum([1, 2, 3])","6"],
+["abs()","القيمة المطلقة","~abs(-7)","7"],
+["round()","تقريب","~round(3.14159, 2)","3.14"],
+["sorted()","ترتيب تصاعدي","~sorted([3, 1, 2])","[1, 2, 3]"],
+["type()","نوع القيمة","~type(5)","<class 'int'>"],
+["range()","سلسلة أعداد","~list(range(3))","[0, 1, 2]"]]],
+["مكتبة math (الرياضيات)",["الدالة","الشرح","مثال","الناتج"],[
+["math.sqrt(x)","الجذر التربيعي","~math.sqrt(49)","7.0"],
+["math.pow(x,y)","x أس y","~math.pow(2, 3)","8.0"],
+["math.pi","قيمة π","~math.pi","3.141592653589793"],
+["math.ceil(x)","تقريب لأعلى","~math.ceil(4.1)","5"],
+["math.floor(x)","تقريب لأسفل","~math.floor(4.9)","4"],
+["math.factorial(n)","مضروب العدد","~math.factorial(5)","120"],
+["math.gcd(a,b)","القاسم المشترك الأكبر","~math.gcd(12, 18)","6"],
+["math.sin(x)","جيب الزاوية (بالراديان)","~math.sin(math.pi / 2)","1.0"]]],
+["مكتبة random (العشوائية)",["الدالة","الشرح","مثال","الناتج"],[
+["random.random()","كسر عشوائي بين 0 و1","~random.random()","مثل 0.5488"],
+["random.randint(a,b)","صحيح عشوائي (النهايتان مشمولتان)","~random.randint(1, 6)","مثل 4"],
+["random.randrange(a,b,s)","من range عشوائيًا","~random.randrange(0, 10, 2)","مثل 6"],
+["random.uniform(a,b)","كسر عشوائي بين قيمتين","~random.uniform(1, 2)","مثل 1.73"],
+["random.choice(seq)","اختيار عنصر عشوائي","~random.choice([\"A\", \"B\", \"C\"])","مثل B"],
+["random.shuffle(list)","خلط ترتيب القائمة","~L = [1, 2, 3]\nrandom.shuffle(L)\nprint(L)","مثل [3, 1, 2]"],
+["random.sample(seq,k)","اختيار k عناصر بلا تكرار","~random.sample(range(10), 3)","مثل [7, 2, 9]"]]],
+["مكتبة datetime (التاريخ والوقت)",["الأمر","الشرح","مثال","الناتج"],[
+["datetime.now()","التاريخ والوقت الحاليان","~from datetime import datetime\nprint(datetime.now())","2026-10-09 14:30:05.123456"],
+["date.today()","تاريخ اليوم فقط","~from datetime import date\nprint(date.today())","2026-10-09"],
+["now.year / month / day","استخراج جزء من التاريخ","~n = datetime.now()\nprint(n.year, n.month, n.day)","2026 10 9"],
+["strftime(صيغة)","تنسيق التاريخ كنص","~datetime.now().strftime(\"%d/%m/%Y\")","09/10/2026"],
+["datetime(y,m,d)","إنشاء تاريخ محدد","~print(datetime(2026, 5, 15))","2026-05-15 00:00:00"],
+["timedelta","الجمع والطرح على التاريخ","~from datetime import timedelta\nprint(date.today() + timedelta(days=7))","التاريخ بعد 7 أيام"]]]]
+};
+const tb=s=>`<h3>${s[0]}</h3><div class="tw"><table><thead><tr>${s[1].map(h=>`<th>${h}</th>`).join('')}</tr></thead><tbody>${s[2].map(r=>`<tr>${r.map(c=>c[0]=='~'?`<td><pre>${e(c.slice(1))}</pre></td>`:`<td>${e(c)}</td>`).join('')}</tr>`).join('')}</tbody></table></div>`;
+const nav=document.getElementById('nav'),m=document.getElementById('m');
+T.forEach((t,i)=>{const b=document.createElement('button');b.textContent=(i+1)+'. '+t[1];b.setAttribute('role','tab');b.onclick=()=>show(i);nav.appendChild(b)});
+function show(i){
+ [...nav.children].forEach((b,j)=>b.setAttribute('aria-selected',j===i));
+ const t=T[i];
+ m.innerHTML=`<div class="hero"><div class="big" aria-hidden="true">${t[0]}</div><div><h2>${t[1]}</h2><p class="en">${t[2]}</p></div></div>
+ <h3>الشرح</h3><div class="box">${t[3]}</div>
+ ${(X[i]||[]).map(tb).join('')}
+ <h3>مثال تطبيقي</h3><pre>${e(t[4])}</pre>
+ <h3>خمسة أمثلة للتدريب (اضغط على البطاقة لقلبها وعرض الحل)</h3>
+ <div class="grid">${t[5].map((x,k)=>`<button class="fl" aria-label="مثال ${k+1}"><div class="in"><div class="f"><small>مثال ${k+1}</small><div style="font-weight:700">${e(x[0])}</div><small>↺ اضغط لعرض الحل</small></div><div class="b"><small>الحل</small><pre>${e(x[1])}</pre></div></div></button>`).join('')}</div>`;
+ m.querySelectorAll('.fl').forEach(c=>c.onclick=()=>c.classList.toggle('on'));
+ scrollTo(0,0);
+}
+show(0);
+</script>
+</body>
+</html>
